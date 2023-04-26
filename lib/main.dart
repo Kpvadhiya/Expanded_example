@@ -18,39 +18,83 @@ class Myapp extends StatelessWidget {
     child:Column
       (
       children: [
-         
-        Expanded(
-          flex: 8,
-          child: Container(
-            constraints: BoxConstraints.expand(),
-            color: Colors.red,
-            child: Center(child: Text('8',style:TextStyle(
-                color: Colors.white,
-                fontSize: 30
-            ),
-            )
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 5,
-          child: Container(
-            constraints: BoxConstraints.expand(),
+        _customContainer(
+          color: Colors.red,
+          number: 8,
+      ),
+      Expanded(
+        flex: 5,
+        child: Row(
+          children:[
+          _customContainer(
             color: Colors.indigo,
-            child: Center(child: Text('5',style:TextStyle(
-                            color: Colors.white,
-                            fontSize: 30
-            ),
-            )
-            ),
-          ),
+            number: 5,
         ),
+            Expanded(
+              flex: 3,
+              child:Column
+                (
+                children:[
+                Expanded(
+                  flex: 2,
+                  child:Row(
+                    children:[
+                Expanded(
+                  flex: 1,
+                    child:Column(
+                      children:[
+                      _customContainer(
+                    color: Colors.green,
+                    number: 1,
+              ),
+                        _customContainer(
+                          color: Colors.blue,
+                          number: 1,
+                        ),
+                    ],
+                    ),
+                ), _customContainer(
+                        color: Colors.brown,
+                        number: 2,
+                      ),
+              ],
+            ),
+                ),
+                  _customContainer(
+                    color: Colors.purple,
+                    number: 3,
+                  ),
+              ],
+              ),
+            ),
+        ],
+        ),
+      ),
       ],
-    ),
 
+    ),
   ) ,
   ),
-      );
-
+    );
 }
-  }
+ }
+ Widget _customContainer (
+{
+  required int number,
+  required Color color,
+
+}){
+    return   Expanded(
+      flex: number,
+      child: Container(
+        constraints: BoxConstraints.expand(),
+        color: color ,
+        child: Center(child: Text('${number}',style:TextStyle(
+            color: Colors.white,
+            fontSize: 30
+        ),
+        )
+        ),
+      ),
+    );
+ }
